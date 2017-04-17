@@ -1,0 +1,36 @@
+group 'ru.rubbles.ci'
+version '1.0-SNAPSHOT'
+buildscript {
+    ext {
+        springBootVersion = '1.3.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
+    }
+}
+apply plugin: 'java'
+//apply plugin: 'spring-boot'
+apply plugin: 'eu.appsatori.fatjar'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile ('com.hazelcast.jet:hazelcast-jet:0.3.1')
+    compile('org.projectlombok:lombok:1.16.16')
+//    compile ('com.hazelcast.jet:hazelcast-jet-kafka:0.3')
+    compile('org.apache.hadoop:hadoop-mapreduce-client-core:2.7.1')
+    compile('org.apache.hadoop:hadoop-common:2.7.1')
+    compile ('com.hazelcast.jet:hazelcast-jet-hadoop:0.3.1')
+    compile('org.postgresql:postgresql:42.0.0')
+}
